@@ -1,147 +1,54 @@
-import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react'
+import React from 'react';
 
-export default function Footer() {
-  const currentYear = new Date().getFullYear()
+const Footer = () => {
+    return (
+        <footer style={{ background: '#111', color: 'white', padding: '4rem 0 2rem' }}>
+            <div className="container">
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '3rem', marginBottom: '3rem' }}>
+                    <div>
+                        <div style={{
+                            fontFamily: 'var(--font-heading)',
+                            fontSize: '1.5rem',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                            marginBottom: '1.5rem'
+                        }}>
+                            <div style={{ width: '20px', height: '20px', background: 'var(--accent)', clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}></div>
+                            TITAN
+                        </div>
+                        <p style={{ color: '#888', lineHeight: 1.6 }}>
+                            Building the future with strength, integrity, and innovation. Your trusted partner in construction excellence.
+                        </p>
+                    </div>
 
-  const footerLinks = {
-    services: [
-      { name: 'Commercial Construction', href: '#services' },
-      { name: 'Residential Construction', href: '#services' },
-      { name: 'Industrial Construction', href: '#services' },
-      { name: 'Renovation & Remodeling', href: '#services' },
-    ],
-    company: [
-      { name: 'About Us', href: '#about' },
-      { name: 'Our Portfolio', href: '#portfolio' },
-      { name: 'Certifications', href: '#about' },
-      { name: 'Contact', href: '#contact' },
-    ],
-  }
+                    <div>
+                        <h4 style={{ marginBottom: '1.5rem', fontSize: '1.2rem' }}>Quick Links</h4>
+                        <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.8rem', color: '#888' }}>
+                            <li><a href="#home" style={{ transition: 'color 0.3s' }} onMouseEnter={(e) => e.target.style.color = 'var(--accent)'} onMouseLeave={(e) => e.target.style.color = '#888'}>Home</a></li>
+                            <li><a href="#about" style={{ transition: 'color 0.3s' }} onMouseEnter={(e) => e.target.style.color = 'var(--accent)'} onMouseLeave={(e) => e.target.style.color = '#888'}>About Us</a></li>
+                            <li><a href="#services" style={{ transition: 'color 0.3s' }} onMouseEnter={(e) => e.target.style.color = 'var(--accent)'} onMouseLeave={(e) => e.target.style.color = '#888'}>Services</a></li>
+                            <li><a href="#projects" style={{ transition: 'color 0.3s' }} onMouseEnter={(e) => e.target.style.color = 'var(--accent)'} onMouseLeave={(e) => e.target.style.color = '#888'}>Projects</a></li>
+                        </ul>
+                    </div>
 
-  const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
-  ]
+                    <div>
+                        <h4 style={{ marginBottom: '1.5rem', fontSize: '1.2rem' }}>Services</h4>
+                        <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.8rem', color: '#888' }}>
+                            <li>Residential Construction</li>
+                            <li>Commercial Development</li>
+                            <li>Industrial Engineering</li>
+                            <li>Project Management</li>
+                        </ul>
+                    </div>
+                </div>
 
-  return (
-    <footer id="contact" className="bg-charcoal-dark border-t border-white/10">
-      <div className="container-custom py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-12">
-          {/* Company Info */}
-          <div>
-            <h3 className="text-2xl font-bold text-yellow-accent mb-4">
-              TITAN CONSTRUCTION
-            </h3>
-            <p className="text-white/70 mb-6 leading-relaxed">
-              Building excellence since 1999. Professional construction and
-              contracting services you can trust.
-            </p>
-            <div className="space-y-3">
-              <a
-                href="tel:+1234567890"
-                className="flex items-center gap-3 text-white/80 hover:text-yellow-accent transition-colors"
-              >
-                <Phone className="w-5 h-5" />
-                <span>(123) 456-7890</span>
-              </a>
-              <a
-                href="mailto:info@titanconstruction.com"
-                className="flex items-center gap-3 text-white/80 hover:text-yellow-accent transition-colors"
-              >
-                <Mail className="w-5 h-5" />
-                <span>info@titanconstruction.com</span>
-              </a>
-              <div className="flex items-start gap-3 text-white/80">
-                <MapPin className="w-5 h-5 mt-1 flex-shrink-0" />
-                <span>123 Construction Ave, Building City, BC 12345</span>
-              </div>
+                <div style={{ borderTop: '1px solid #333', paddingTop: '2rem', textAlign: 'center', color: '#666' }}>
+                    <p>&copy; {new Date().getFullYear()} Titan Construction. All rights reserved.</p>
+                </div>
             </div>
-          </div>
+        </footer>
+    );
+};
 
-          {/* Services */}
-          <div>
-            <h4 className="text-lg font-bold text-white mb-4">Services</h4>
-            <ul className="space-y-2">
-              {footerLinks.services.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-white/70 hover:text-yellow-accent transition-colors"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h4 className="text-lg font-bold text-white mb-4">Company</h4>
-            <ul className="space-y-2">
-              {footerLinks.company.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-white/70 hover:text-yellow-accent transition-colors"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Social Media */}
-          <div>
-            <h4 className="text-lg font-bold text-white mb-4">Follow Us</h4>
-            <div className="flex space-x-4 mb-6">
-              {socialLinks.map((social, index) => {
-                const Icon = social.icon
-                return (
-                  <a
-                    key={index}
-                    href={social.href}
-                    aria-label={social.label}
-                    className="bg-charcoal-light hover:bg-yellow-accent text-white hover:text-charcoal w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300"
-                  >
-                    <Icon className="w-5 h-5" />
-                  </a>
-                )
-              })}
-            </div>
-            <div className="text-white/70 text-sm">
-              <p className="mb-2">Business Hours:</p>
-              <p>Monday - Friday: 7:00 AM - 6:00 PM</p>
-              <p>Saturday: 8:00 AM - 4:00 PM</p>
-              <p>Sunday: Closed</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-white/60 text-sm">
-              © {currentYear} Titan Construction. All rights reserved.
-            </p>
-            <div className="flex flex-wrap gap-6 text-sm">
-              <a href="#" className="text-white/60 hover:text-yellow-accent transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-white/60 hover:text-yellow-accent transition-colors">
-                Terms of Service
-              </a>
-              <a href="#" className="text-white/60 hover:text-yellow-accent transition-colors">
-                Sitemap
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-  )
-}
-
+export default Footer;

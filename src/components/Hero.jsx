@@ -1,89 +1,111 @@
-import { ArrowRight, Award, Clock, Users } from 'lucide-react'
+import React from 'react';
+import { motion } from 'framer-motion';
 
-export default function Hero({ onQuoteClick }) {
-  const stats = [
-    { icon: Award, value: '500+', label: 'Projects Completed' },
-    { icon: Users, value: '25+', label: 'Years Experience' },
-    { icon: Clock, value: '98%', label: 'On-Time Delivery' },
-  ]
+const Hero = () => {
+    return (
+        <section id="home" style={{
+            height: '100vh',
+            display: 'flex',
+            alignItems: 'center',
+            position: 'relative',
+            overflow: 'hidden',
+            color: 'white'
+        }}>
+            {/* Background Image */}
+            <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                zIndex: 0
+            }}>
+                <img
+                    src="/images/titan_hero_bg_1763914689750.png"
+                    alt="Construction Site"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+                <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    background: 'linear-gradient(to right, rgba(27, 38, 49, 0.9) 0%, rgba(27, 38, 49, 0.4) 100%)'
+                }} />
+            </div>
 
-  return (
-    <section
-      id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
-    >
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&h=1080&fit=crop')",
-        }}
-      >
-        <div className="absolute inset-0 bg-charcoal-dark/85"></div>
-      </div>
+            <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+                <motion.div
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8 }}
+                    style={{ maxWidth: '800px' }}
+                >
+                    <h2 style={{
+                        color: 'var(--accent)',
+                        fontSize: '1.2rem',
+                        fontWeight: '700',
+                        letterSpacing: '2px',
+                        marginBottom: '1rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '1rem'
+                    }}>
+                        <span style={{ width: '40px', height: '2px', background: 'var(--accent)' }}></span>
+                        BUILDING THE FUTURE
+                    </h2>
+                    <h1 style={{
+                        fontSize: 'clamp(3rem, 6vw, 5rem)',
+                        lineHeight: 1.1,
+                        marginBottom: '2rem',
+                        textShadow: '0 10px 30px rgba(0,0,0,0.3)'
+                    }}>
+                        SOLID FOUNDATIONS.<br />
+                        SUPERIOR STRUCTURES.
+                    </h1>
+                    <p style={{
+                        fontSize: '1.2rem',
+                        maxWidth: '600px',
+                        marginBottom: '3rem',
+                        color: 'rgba(255,255,255,0.9)',
+                        lineHeight: 1.6
+                    }}>
+                        We deliver industrial, commercial, and residential construction solutions with unmatched precision and durability.
+                    </p>
 
-      {/* Content */}
-      <div className="relative z-10 container-custom text-center animate-fade-in">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 text-shadow-lg">
-            <span className="text-white">BUILDING</span>
-            <br />
-            <span className="text-yellow-accent">EXCELLENCE</span>
-          </h1>
-          <p className="text-xl md:text-2xl lg:text-3xl mb-4 text-white/90 text-shadow font-light">
-            Professional Construction & Contracting Services
-          </p>
-          <p className="text-lg md:text-xl mb-10 text-white/80 text-shadow max-w-2xl mx-auto">
-            From groundbreaking to grand opening, we deliver exceptional results
-            that stand the test of time. Trust Titan Construction for your next
-            project.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button
-              onClick={onQuoteClick}
-              className="btn-primary text-lg px-10 py-5 inline-flex items-center gap-3 group"
+                    <div style={{ display: 'flex', gap: '1.5rem' }}>
+                        <button className="btn btn-primary">
+                            View Our Projects
+                        </button>
+                        <button className="btn" style={{ border: '2px solid white', color: 'white' }}>
+                            Contact Us
+                        </button>
+                    </div>
+                </motion.div>
+            </div>
+
+            {/* Scroll Indicator */}
+            <motion.div
+                animate={{ y: [0, 10, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+                style={{
+                    position: 'absolute',
+                    bottom: '2rem',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    opacity: 0.7
+                }}
             >
-              Get Free Quote
-              <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-            </button>
-            <a
-              href="#portfolio"
-              className="btn-secondary text-lg px-10 py-5 inline-flex items-center"
-            >
-              View Our Work
-            </a>
-          </div>
-        </div>
+                <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Scroll</span>
+                <div style={{ width: '2px', height: '40px', background: 'white' }}></div>
+            </motion.div>
+        </section>
+    );
+};
 
-        {/* Stats */}
-        <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          {stats.map((stat, index) => {
-            const Icon = stat.icon
-            return (
-              <div
-                key={index}
-                className="bg-charcoal-light/50 backdrop-blur-sm rounded-lg p-6 border border-yellow-accent/20 hover:border-yellow-accent/50 transition-all duration-300 animate-slide-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <Icon className="w-10 h-10 text-yellow-accent mx-auto mb-4" />
-                <div className="text-4xl font-bold text-yellow-accent mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-white/80">{stat.label}</div>
-              </div>
-            )
-          })}
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-yellow-accent rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-yellow-accent rounded-full mt-2"></div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
+export default Hero;
